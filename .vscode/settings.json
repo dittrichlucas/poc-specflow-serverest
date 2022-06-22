@@ -1,0 +1,4 @@
+{
+    "cucumberautocomplete.steps": ["/**/Steps/**/*.cs"],
+    "dotnet-test-explorer.testProjectPath": "Poc.SpecFlow.ServeRest/Poc.SpecFlow.ServeRest.csproj"
+}

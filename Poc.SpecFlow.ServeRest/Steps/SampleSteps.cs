@@ -1,25 +1,36 @@
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.UnitTestProvider;
 
 namespace Poc.SpecFlow.ServeRest;
 
 [Binding]
 public sealed class SampleStep
 {
-    [Given(@"precondition")]
-    public void Given() 
+    private readonly IUnitTestRuntimeProvider _unitRuntimeProvider;
+
+    public SampleStep(IUnitTestRuntimeProvider unitTestRuntimeProvider)
     {
+        _unitRuntimeProvider = unitTestRuntimeProvider;
+    }
+
+    [Given(@"precondition")]
+    public void Given()
+    {
+        _unitRuntimeProvider.TestIgnore("skip");
         throw new NotImplementedException();
     }
 
     [When(@"action")]
-    public void When() 
+    public void When()
     {
+        _unitRuntimeProvider.TestIgnore("skip");
         throw new NotImplementedException();
     }
-    
+
     [Then(@"testable outcome")]
-    public void Then() 
+    public void Then()
     {
+        _unitRuntimeProvider.TestIgnore("skip");
         throw new NotImplementedException();
     }
 }

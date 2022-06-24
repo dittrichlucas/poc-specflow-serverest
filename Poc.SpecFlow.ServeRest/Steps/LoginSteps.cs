@@ -5,7 +5,7 @@ using TechTalk.SpecFlow;
 using Poc.SpecFlow.ServeRest.Helpers;
 using Newtonsoft.Json;
 
-namespace Poc.SpecFlow.ServeRest;
+namespace Poc.SpecFlow.ServeRest.Steps;
 
 [Binding]
 public sealed class LoginStep
@@ -15,13 +15,13 @@ public sealed class LoginStep
     private static readonly HttpClient client = new HttpClient();
 
     [Given(@"I access the route (.*)")]
-    public void Given(string route)
+    public void GivenIAccessTheRoute(string route)
     {
         loginRoute = new Uri(route);
     }
 
     [When(@"I pass the (.*) and (.*) password")]
-    public async Task When(string email, string password)
+    public async Task WhenIPassTheEmailAndPassword(string email, string password)
     {
         var body = new Dictionary<string, string>
         {
@@ -40,7 +40,7 @@ public sealed class LoginStep
     }
 
     [Then(@"I should get a token for authentication")]
-    public async Task ThenAsync()
+    public async Task ThenIShouldGetATokenForAuthentication()
     {
         var res = await Response.Content.ReadAsStringAsync();
         var body = JObject.Parse(res);
